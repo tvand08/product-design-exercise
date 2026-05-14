@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(post, :bookmark), data: { controller: "bookmark" } do %>
+  <div class="bookmark-btn-wrapper">
+    <% if post.bookmarks.any? %>
+      <%= button_to post_bookmark_path(post), method: :delete,
+          class: "btn btn-link text-warning p-0" do %>
+        <i class="bi bi-bookmark-fill fs-3"></i>
+      <% end %>
+    <% else %>
+      <%= button_to post_bookmark_path(post), method: :post,
+          class: "btn btn-link text-muted p-0" do %>
+        <i class="bi bi-bookmark fs-3"></i>
+      <% end %>
+    <% end %>
+    <div data-bookmark-target="message" class="bookmark-saved-text">bookmark saved! <strong>name it?</strong></div>
+  </div>
+<% end %>

@@ -12,3 +12,25 @@ html {
 body {
   background-color: transparent;
 }
+
+.bookmark-btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.bookmark-saved-text {
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width 0.35s ease, opacity 0.35s ease;
+  font-size: 0.8rem;
+  background-color: #ffc107;
+  border-radius: 3px;
+  &.visible {
+    
+    padding: 5px;
+    max-width: 250px;
+    opacity: 1;
+  }
+}
