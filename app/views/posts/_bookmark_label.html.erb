@@ -1,0 +1,28 @@
+<% bookmark = post.bookmarks.first %>
+<% if bookmark&.title.present? %>
+  <span id="<%= dom_id(post, :bookmark_label) %>"
+        class="bookmark-label-tag"
+        data-controller="label-edit"
+        data-label-edit-url-value="<%= post_bookmark_path(post) %>">
+    <span data-label-edit-target="display"
+          data-action="click->label-edit#edit">
+      <%= bookmark.title %>
+    </span>
+    <span data-label-edit-target="editor" class="d-none d-flex align-items-center gap-1">
+      <input type="text"
+             data-label-edit-target="input"
+             class="bookmark-label-input"
+             value="<%= bookmark.title %>"
+             data-action="keydown.enter->label-edit#save keydown.escape->label-edit#cancel">
+      <button type="button" class="bookmark-icon-btn" data-action="click->label-edit#save">
+        <i class="bi bi-check-lg"></i>
+      </button>
+      <button type="button" class="bookmark-icon-btn" data-action="click->label-edit#cancel">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <button type="button" class="bookmark-icon-btn" data-action="click->label-edit#destroy">
+        <i class="bi bi-trash"></i>
+      </button>
+    </span>
+  </span>
+<% end %>

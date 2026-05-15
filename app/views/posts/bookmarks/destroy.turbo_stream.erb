@@ -1,3 +1,14 @@
 <%= turbo_stream.replace dom_id(@post, :bookmark) do %>
   <%= render "posts/bookmark_button", post: @post %>
 <% end %>
+
+<%= turbo_stream.remove dom_id(@post, :bookmarked) %>
+<%= turbo_stream.remove dom_id(@post, :bookmark_label) %>
+
+<% if Bookmark.none? %>
+  <%= turbo_stream.append "bookmarked_posts" do %>
+    <li id="bookmarked_posts_empty" class="col-12">
+      <p class="text-muted fst-italic">No bookmarked posts yet.</p>
+    </li>
+  <% end %>
+<% end %>
