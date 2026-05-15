@@ -44,6 +44,10 @@ body {
   align-items: center;
 }
 
+.show-page-label .bookmark-label-tag {
+  max-width: unset;
+}
+
 .bookmark-saved-text {
   overflow: hidden;
   max-width: 0;

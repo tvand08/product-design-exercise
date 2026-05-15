@@ -1,3 +1,6 @@
 <%= turbo_stream.replace_all("[data-post-card='#{@post.id}']") do %>
   <%= render "posts/post_card", post: @post %>
 <% end %>
+<%= turbo_stream.update dom_id(@post, :show_bookmark_label) do %>
+  <%= render "posts/bookmark_label", post: @post %>
+<% end %>
