@@ -1,0 +1,3 @@
+<%= turbo_stream.replace_all("[data-post-card='#{@post.id}']") do %>
+  <%= render "posts/post_card", post: @post %>
+<% end %>

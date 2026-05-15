@@ -1,4 +1,5 @@
-<%= turbo_frame_tag dom_id(post, :bookmark), data: { controller: "bookmark" } do %>
+<%= turbo_frame_tag dom_id(post, :bookmark),
+    data: { controller: "bookmark", bookmark_url_value: post_bookmark_path(post) } do %>
   <div class="bookmark-btn-wrapper">
     <% if post.bookmarks.any? %>
       <%= button_to post_bookmark_path(post), method: :delete,
@@ -11,6 +12,22 @@
         <i class="bi bi-bookmark fs-3"></i>
       <% end %>
     <% end %>
-    <div data-bookmark-target="message" class="bookmark-saved-text">bookmark saved! <strong>name it?</strong></div>
+    <div data-bookmark-target="message" class="bookmark-saved-text">
+      <span data-bookmark-target="label">
+        bookmark saved!
+        <button type="button" class="bookmark-name-btn" data-action="click->bookmark#openNaming">name it?</button>
+      </span>
+      <span data-bookmark-target="naming" class="bookmark-naming d-none">
+        <input type="text" data-bookmark-target="input" class="bookmark-name-input"
+               placeholder="name..."
+               data-action="keydown.enter->bookmark#confirmName keydown.escape->bookmark#denyName">
+        <button type="button" class="bookmark-icon-btn" data-action="click->bookmark#confirmName">
+          <i class="bi bi-check-lg"></i>
+        </button>
+        <button type="button" class="bookmark-icon-btn" data-action="click->bookmark#denyName">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </span>
+    </div>
   </div>
 <% end %>
