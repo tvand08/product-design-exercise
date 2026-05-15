@@ -5,26 +5,26 @@ Add functionality to the existing application to allow for customizable bookmark
 
 ## Product Question Responses
 - **When should someone name a bookmark: while saving it, after saving it, or both?**
-    - We give the user the option to name before saving, and have the field be editable so a user can change it at a later time
+    - We save the bookmark first and give the user the option to add a title immediately after
 - **Should the act of bookmarking flow directly into naming, or should naming stay lightweight until later?**
     - The option to name immediately should be available, without forcing the interruption on the user.
 - **Is the custom name optional, and if so what is the fallback?**
     - The custom name should be optional, as a user may not always need a title to be able to remember their reasoning for bookmarking
 -  **Where should the bookmarks list live on the homepage so it feels useful but not distracting?**
-    - I would have a dropdown be available in the navbar that would allow the user to quickly access their bookmarks without them taking up real estate on the home page.
+    - Standard practice would have a dropdown be available in the navbar that would allow the user to quickly access their bookmarks without them taking up real estate on the home page. Given the pitch requirement, we will have the bookmarked posts live underneath the recent posts where the user can readily access them.
 - **How should reordering work: drag and drop, move controls, or something else?**
     - Drag and drop is the most user friendly option, but can get a bit messy when using larger lists.
 - **What should happen when someone unbookmarks an item from the middle of the list?**
     - Bookmarks below push up
 - **What should happen if a bookmark is added again after being removed?**
-    - Should be considered a new bookmark and follow the default patter for new bookmarks
+    - Should be considered a new bookmark and follow the default pattern for new bookmarks
 - **How should the UI behave when there are no bookmarks, only one bookmark, or many bookmarks?**
     - We can show either a filled or unfilled bookmark icon for if the bookmarks exist or not. The number of bookmarks would not be an immediately important piece of information. Can be provided once we open the bookmarks.
 - **What edge cases matter for empty names, duplicate names, and very long names?**
     - Bookmarks would be saved using a unique PK, so empty names and duplicate names will have no impact (UI considerations here), very long names will need to be truncated
 
 ## AI Prompts 
-I chose to add this section to showcase a bit of how I used AI in helping with this project. I used claude(Sonnnet 4.6) but left it completely disconnected from the codebase, so it was purely acting in a chat environment. No code changes directly from Claude Code.
+I chose to add this section to showcase a bit of how I used AI in helping with this project. 
 - Prompt: 
 >I'm trying to work on a UX problem. We want the ability to bookmark a given post. When we bookmark it we also would like the option to give that bookmark a title, but we don't necessarily want to force that on the user. So the user needs to know it is an option without interrupting their flow. Give me recommendations on this. Consider possible real world examples
 - Response: 
@@ -43,4 +43,8 @@ Store a position integer on each row, but treat it as an arbitrary sort order ra
 - Response:
     -  Using stimulus in combination with sortablejs
     
+- I also used claude code in situations to accelerate development around certain designs.
+
+## Reflections on the exercise
+I found this to be a very enjoyable exercise to step into the world of rails. It gave some freedom to make decisions while also guiding towards certain rails/turbo conventions which was a good introduction to the ecosystem. While I do like the solution I've given here, I will say that if I were to do it again, I would probably try and simplify it a bit more. I think I over-optimized for the user experience at the cost of complexity, and would like to see that be balanced out a bit more.
     
